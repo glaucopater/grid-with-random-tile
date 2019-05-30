@@ -5,7 +5,7 @@ import { StyledGrid } from "./components/Styled";
 
 import "./styles.css";
 
-const MAX_ITEMS = 5;
+const MAX_ITEMS = 20;
 
 function App() {
   const randomInt = () => {
