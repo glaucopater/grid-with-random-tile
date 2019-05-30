@@ -33,24 +33,28 @@ export const Top = styled.div`
   width: 10px;
   top: 0;
   opacity: ${props => (props.top ? props.top : 0)};
+  color: ${props => (props.connected ? 'green' : 'red')};
 `;
 
 export const Bottom = styled.div`
   position: absolute;
   bottom: 0;
   opacity: ${props => (props.bottom ? props.bottom : 0)};
+  color: ${props => (props.connected ? 'green' : 'red')};
 `;
 
 export const Left = styled.div`
   position: absolute;
   left: 0;
   opacity: ${props => (props.left ? props.left : 0)};
+  color: ${props => (props.leftConnected ? 'green' : 'red')};
 `;
 
 export const Right = styled.div`
   position: absolute;
   right: 0;
   opacity: ${props => (props.right ? props.right : 0)};
+  color: ${props => (props.rightConnected ? 'green' : 'red')};
 `;
 
 export const StyledGrid = styled.div`

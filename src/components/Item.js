@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 import { StyledItem, Content, Top, Right, Bottom, Left } from "./Styled";
 
@@ -11,7 +10,9 @@ class Item extends Component {
       bottom: null,
       left: null,
       right: null,
-      pos: { x: null, y: null }
+      pos: { x: null, y: null },
+      rightConnected: null,
+      leftConnected: null,
     };
   }
 
