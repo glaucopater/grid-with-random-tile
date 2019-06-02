@@ -4,8 +4,7 @@ import Item from "./components/Item";
 import { StyledGrid } from "./components/Styled";
 
 import "./styles.css";
-
-const MAX_ITEMS = 20;
+import { MAX_ITEMS } from "./constants";
 
 function App() {
   const randomInt = () => {
@@ -28,12 +27,18 @@ function App() {
     const rightConnectedItems = itemsWithProps.map((item, index) => {
       //every check and update should be atomic
       //connections could be 4...
-        const { rightConnected, leftConnected, ...props } = item.props;
-        return React.cloneElement(item, {
-          rightConnected: itemsWithProps[index + 1] && itemsWithProps[index + 1].props.left && item.props.right,
-          leftConnected: itemsWithProps[index - 1] && itemsWithProps[index - 1].props.right && item.props.left,
-          ...props
-        });
+      const { rightConnected, leftConnected, ...props } = item.props;
+      return React.cloneElement(item, {
+        rightConnected:
+          itemsWithProps[index + 1] &&
+          itemsWithProps[index + 1].props.left &&
+          item.props.right,
+        leftConnected:
+          itemsWithProps[index - 1] &&
+          itemsWithProps[index - 1].props.right &&
+          item.props.left,
+        ...props
+      });
     });
 
     return rightConnectedItems;

@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 import chroma from "chroma-js";
 
+import { MAX_ITEMS_PER_ROW } from "../constants";
+
 export const StyledItem = styled.div`
   display: flex;
   flex: 1;
@@ -16,6 +18,10 @@ export const StyledItem = styled.div`
       font-size: 18px
       font-weight: bold
     `}
+  @media (max-width: 800px) {
+    width: 75px;
+    height: 75px;
+  }
 `;
 
 export const Content = styled.div`
@@ -33,33 +39,40 @@ export const Top = styled.div`
   width: 10px;
   top: 0;
   opacity: ${props => (props.top ? props.top : 0)};
-  color: ${props => (props.connected ? 'green' : 'red')};
 `;
 
 export const Bottom = styled.div`
   position: absolute;
   bottom: 0;
   opacity: ${props => (props.bottom ? props.bottom : 0)};
-  color: ${props => (props.connected ? 'green' : 'red')};
 `;
 
 export const Left = styled.div`
   position: absolute;
   left: 0;
   opacity: ${props => (props.left ? props.left : 0)};
-  color: ${props => (props.leftConnected ? 'green' : 'red')};
+  background-color: ${props => (props.leftConnected ? "green" : "red")};
 `;
 
 export const Right = styled.div`
   position: absolute;
   right: 0;
   opacity: ${props => (props.right ? props.right : 0)};
-  color: ${props => (props.rightConnected ? 'green' : 'red')};
+  border: 1px solid;
+  background-color: ${props => (props.rightConnected ? "green" : "red")};
 `;
 
 export const StyledGrid = styled.div`
   display: grid
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(${MAX_ITEMS_PER_ROW}, 1fr);
   grid-template-rows: 100px 100px;
   grid-gap: 10px;
+  margin: 50px auto;
+  width: 50%;
+  max-width: 600px
+  @media (max-width: 800px) {
+    margin: 50px;
+    grid-gap: 5px;
+    grid-template-rows: 75px 75px;
+  }
 `;
