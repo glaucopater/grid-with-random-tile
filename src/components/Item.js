@@ -26,19 +26,25 @@ class Item extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ ...this.props }, () => {
+      this.props.firstAction(this.state);
+    });
+  }
+
   render() {
     return (
       <StyledItem>
         <Content>
-          <Top {...this.props}>{this.props.topConnected && <StyledLink />}</Top>
-          <Right {...this.props}>
-            {this.props.rightConnected && <StyledLink />}
+          <Top {...this.state}>{this.state.topConnected && <StyledLink />}</Top>
+          <Right {...this.state}>
+            {this.state.rightConnected && <StyledLink />}
           </Right>
-          <Bottom {...this.props}>
-            {this.props.bottomConnected && <StyledLink />}
+          <Bottom {...this.state}>
+            {this.state.bottomConnected && <StyledLink />}
           </Bottom>
-          <Left {...this.props}>
-            {this.props.leftConnected && <StyledLink />}
+          <Left {...this.state}>
+            {this.state.leftConnected && <StyledLink />}
           </Left>
         </Content>
       </StyledItem>
