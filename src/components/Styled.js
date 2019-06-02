@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import chroma from "chroma-js";
-
 import { MAX_ITEMS_PER_ROW } from "../constants";
 
 export const StyledGrid = styled.div`
@@ -27,6 +26,7 @@ export const StyledItem = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 3px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
   ${({ color = chroma.random() }) =>
     css`
       background-color: ${color}
@@ -59,28 +59,28 @@ export const Junction = styled.div`
 
 export const Top = styled(Junction)`
   top: 0;
-  opacity: ${props => (props.top ? props.top : 0)};
+  opacity: ${props => (props.top ? +props.top : 0)};
   background-color: ${props => (props.topConnected ? "green" : "red")};
   color: ${props => (props.topConnected ? "white" : "black")};
 `;
 
 export const Bottom = styled(Junction)`
   bottom: 0;
-  opacity: ${props => (props.bottom ? props.bottom : 0)};
+  opacity: ${props => (props.bottom ? +props.bottom : 0)};
   background-color: ${props => (props.bottomConnected ? "green" : "red")};
   color: ${props => (props.bottomConnected ? "white" : "black")};
 `;
 
 export const Left = styled(Junction)`
   left: 0;
-  opacity: ${props => (props.left ? props.left : 0)};
+  opacity: ${props => (props.left ? +props.left : 0)};
   background-color: ${props => (props.leftConnected ? "green" : "red")};
   color: ${props => (props.leftConnected ? "white" : "black")};
 `;
 
 export const Right = styled(Junction)`
   right: 0;
-  opacity: ${props => (props.right ? props.right : 0)};
+  opacity: ${props => (props.right ? +props.right : 0)};
   background-color: ${props => (props.rightConnected ? "green" : "red")};
   color: ${props => (props.rightConnected ? "white" : "black")};
 `;

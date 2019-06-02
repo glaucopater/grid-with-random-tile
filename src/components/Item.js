@@ -1,6 +1,14 @@
-import React, { Component } from "react";
-
+import React, { Component, Fragment } from "react";
 import { StyledItem, Content, Top, Right, Bottom, Left } from "./Styled";
+import { Link } from "styled-icons/evil";
+
+const StyledLink = () => {
+  return (
+    <Fragment>
+      <Link size="16" />
+    </Fragment>
+  );
+};
 
 class Item extends Component {
   constructor(props) {
@@ -22,10 +30,16 @@ class Item extends Component {
     return (
       <StyledItem>
         <Content>
-          <Top {...this.props}>T</Top>
-          <Right {...this.props}>R</Right>
-          <Bottom {...this.props}>B</Bottom>
-          <Left {...this.props}>L</Left>
+          <Top {...this.props}>{this.props.topConnected && <StyledLink />}</Top>
+          <Right {...this.props}>
+            {this.props.rightConnected && <StyledLink />}
+          </Right>
+          <Bottom {...this.props}>
+            {this.props.bottomConnected && <StyledLink />}
+          </Bottom>
+          <Left {...this.props}>
+            {this.props.leftConnected && <StyledLink />}
+          </Left>
         </Content>
       </StyledItem>
     );

@@ -27,16 +27,7 @@ function App() {
 
   const connectItems = itemsWithProps => {
     const rightConnectedItems = itemsWithProps.map((item, index) => {
-      if (itemsWithProps[index - MAX_ITEMS_PER_ROW]) {
-        console.log(
-          index,
-          itemsWithProps[index].props.top,
-          itemsWithProps[index - MAX_ITEMS_PER_ROW].props.bottom
-        );
-      }
-
       //every check and update should be atomic
-      //connections could be 4...
       const {
         rightConnected,
         leftConnected,
