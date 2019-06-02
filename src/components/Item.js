@@ -13,10 +13,10 @@ class Item extends Component {
       pos: { x: null, y: null },
       rightConnected: null,
       leftConnected: null,
+      topConnected: null,
+      bottomConnected: null
     };
   }
-
-  componentDidMount() {}
 
   render() {
     return (

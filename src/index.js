@@ -4,7 +4,7 @@ import Item from "./components/Item";
 import { StyledGrid } from "./components/Styled";
 
 import "./styles.css";
-import { MAX_ITEMS } from "./constants";
+import { MAX_ITEMS, MAX_ITEMS_PER_ROW } from "./constants";
 
 function App() {
   const randomInt = () => {
@@ -18,22 +18,48 @@ function App() {
       right: randomInt(),
       bottom: randomInt(),
       left: randomInt(),
+      topConnected: null,
       rightConnected: null,
-      leftConnected: null
+      leftConnected: null,
+      bottomConnected: null
     };
   };
 
   const connectItems = itemsWithProps => {
     const rightConnectedItems = itemsWithProps.map((item, index) => {
+      if (itemsWithProps[index - MAX_ITEMS_PER_ROW]) {
+        console.log(
+          index,
+          itemsWithProps[index].props.top,
+          itemsWithProps[index - MAX_ITEMS_PER_ROW].props.bottom
+        );
+      }
+
       //every check and update should be atomic
       //connections could be 4...
-      const { rightConnected, leftConnected, ...props } = item.props;
+      const {
+        rightConnected,
+        leftConnected,
+        topConnected,
+        bottomConnected,
+        ...props
+      } = item.props;
       return React.cloneElement(item, {
+        topConnected:
+          itemsWithProps[index - MAX_ITEMS_PER_ROW] &&
+          itemsWithProps[index - MAX_ITEMS_PER_ROW].props.bottom &&
+          item.props.top,
         rightConnected:
+          (index + 1) % MAX_ITEMS_PER_ROW !== 0 &&
           itemsWithProps[index + 1] &&
           itemsWithProps[index + 1].props.left &&
           item.props.right,
+        bottomConnected:
+          itemsWithProps[index + MAX_ITEMS_PER_ROW] &&
+          itemsWithProps[index + MAX_ITEMS_PER_ROW].props.top &&
+          item.props.bottom,
         leftConnected:
+          index % MAX_ITEMS_PER_ROW !== 0 &&
           itemsWithProps[index - 1] &&
           itemsWithProps[index - 1].props.right &&
           item.props.left,

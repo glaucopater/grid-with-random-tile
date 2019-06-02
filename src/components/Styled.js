@@ -3,6 +3,21 @@ import chroma from "chroma-js";
 
 import { MAX_ITEMS_PER_ROW } from "../constants";
 
+export const StyledGrid = styled.div`
+  display: grid
+  grid-template-columns: repeat(${MAX_ITEMS_PER_ROW}, 1fr);
+  grid-template-rows: 100px 100px;
+  grid-gap: 10px;
+  margin: 50px auto;
+  width: 50%;
+  max-width: 600px
+  @media (max-width: 800px) {
+    margin: 50px;
+    grid-gap: 5px;
+    grid-template-rows: 75px 75px;
+  }
+`;
+
 export const StyledItem = styled.div`
   display: flex;
   flex: 1;
@@ -11,6 +26,7 @@ export const StyledItem = styled.div`
   justify-content: center;
   width: 100px;
   height: 100px;
+  border-radius: 3px;
   ${({ color = chroma.random() }) =>
     css`
       background-color: ${color}
@@ -33,46 +49,38 @@ export const Content = styled.div`
   justify-content: center;
 `;
 
-export const Top = styled.div`
+export const Junction = styled.div`
   position: absolute;
-  height: 10px;
-  width: 10px;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  border-radius: 9px;
+`;
+
+export const Top = styled(Junction)`
   top: 0;
   opacity: ${props => (props.top ? props.top : 0)};
+  background-color: ${props => (props.topConnected ? "green" : "red")};
+  color: ${props => (props.topConnected ? "white" : "black")};
 `;
 
-export const Bottom = styled.div`
-  position: absolute;
+export const Bottom = styled(Junction)`
   bottom: 0;
   opacity: ${props => (props.bottom ? props.bottom : 0)};
+  background-color: ${props => (props.bottomConnected ? "green" : "red")};
+  color: ${props => (props.bottomConnected ? "white" : "black")};
 `;
 
-export const Left = styled.div`
-  position: absolute;
+export const Left = styled(Junction)`
   left: 0;
   opacity: ${props => (props.left ? props.left : 0)};
   background-color: ${props => (props.leftConnected ? "green" : "red")};
+  color: ${props => (props.leftConnected ? "white" : "black")};
 `;
 
-export const Right = styled.div`
-  position: absolute;
+export const Right = styled(Junction)`
   right: 0;
   opacity: ${props => (props.right ? props.right : 0)};
-  border: 1px solid;
   background-color: ${props => (props.rightConnected ? "green" : "red")};
-`;
-
-export const StyledGrid = styled.div`
-  display: grid
-  grid-template-columns: repeat(${MAX_ITEMS_PER_ROW}, 1fr);
-  grid-template-rows: 100px 100px;
-  grid-gap: 10px;
-  margin: 50px auto;
-  width: 50%;
-  max-width: 600px
-  @media (max-width: 800px) {
-    margin: 50px;
-    grid-gap: 5px;
-    grid-template-rows: 75px 75px;
-  }
+  color: ${props => (props.rightConnected ? "white" : "black")};
 `;
