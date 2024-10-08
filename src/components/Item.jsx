@@ -1,14 +1,22 @@
 import React, { Component, Fragment } from "react";
 import { StyledItem, Content, Top, Right, Bottom, Left } from "./Styled";
-import { Link } from "styled-icons/evil";
-
+ 
 const StyledLink = () => {
   return (
-    <Fragment>
-      <Link size="16" />
-    </Fragment>
+    <div style={{  padding: "0px", fontSize: "16px" }}>
+      🔗
+    </div>
   );
 };
+
+const StyledBlock = () => {
+  return (
+    <div style={{  padding: "0px", fontSize: "16px" }}>
+      ⛔
+    </div>
+  );
+};
+
 
 class Item extends Component {
   constructor(props) {
@@ -36,15 +44,17 @@ class Item extends Component {
     return (
       <StyledItem>
         <Content>
-          <Top {...this.state}>{this.state.topConnected && <StyledLink />}</Top>
+          <Top {...this.state}>
+            {this.state.topConnected ? <StyledLink />: <StyledBlock />}
+          </Top>
           <Right {...this.state}>
-            {this.state.rightConnected && <StyledLink />}
+            {this.state.rightConnected ? <StyledLink />: <StyledBlock />}
           </Right>
           <Bottom {...this.state}>
-            {this.state.bottomConnected && <StyledLink />}
+            {this.state.bottomConnected ? <StyledLink />: <StyledBlock />}
           </Bottom>
           <Left {...this.state}>
-            {this.state.leftConnected && <StyledLink />}
+            {this.state.leftConnected ? <StyledLink />: <StyledBlock />}
           </Left>
         </Content>
       </StyledItem>

@@ -39,7 +39,6 @@ const RAW_RUNTIME_STATE =
           ["redux-devtools", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:3.7.0"],\
           ["redux-logger", "npm:3.0.6"],\
           ["styled-components", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:4.2.1"],\
-          ["styled-icons", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:8.6.0"],\
           ["vite", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:5.4.8"],\
           ["vite-plugin-svgr", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:4.2.0"]\
         ],\
@@ -337,14 +336,6 @@ const RAW_RUNTIME_STATE =
           ["@emotion/memoize", "npm:0.7.1"]\
         ],\
         "linkType": "HARD"\
-      }],\
-      ["npm:0.8.8", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@emotion-is-prop-valid-npm-0.8.8-261a0f2426-10c0.zip/node_modules/@emotion/is-prop-valid/",\
-        "packageDependencies": [\
-          ["@emotion/is-prop-valid", "npm:0.8.8"],\
-          ["@emotion/memoize", "npm:0.7.4"]\
-        ],\
-        "linkType": "HARD"\
       }]\
     ]],\
     ["@emotion/memoize", [\
@@ -352,13 +343,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@emotion-memoize-npm-0.7.1-5fcc189787-10c0.zip/node_modules/@emotion/memoize/",\
         "packageDependencies": [\
           ["@emotion/memoize", "npm:0.7.1"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:0.7.4", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@emotion-memoize-npm-0.7.4-5648cf11b8-10c0.zip/node_modules/@emotion/memoize/",\
-        "packageDependencies": [\
-          ["@emotion/memoize", "npm:0.7.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2669,7 +2653,6 @@ const RAW_RUNTIME_STATE =
           ["redux-devtools", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:3.7.0"],\
           ["redux-logger", "npm:3.0.6"],\
           ["styled-components", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:4.2.1"],\
-          ["styled-icons", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:8.6.0"],\
           ["vite", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:5.4.8"],\
           ["vite-plugin-svgr", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:4.2.0"]\
         ],\
@@ -4532,34 +4515,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["styled-icons", [\
-      ["npm:8.6.0", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/styled-icons-npm-8.6.0-faea75e5e0-10c0.zip/node_modules/styled-icons/",\
-        "packageDependencies": [\
-          ["styled-icons", "npm:8.6.0"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:8.6.0", {\
-        "packageLocation": "./.yarn/__virtual__/styled-icons-virtual-371873aba4/3/AppData/Local/Yarn/Berry/cache/styled-icons-npm-8.6.0-faea75e5e0-10c0.zip/node_modules/styled-icons/",\
-        "packageDependencies": [\
-          ["styled-icons", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:8.6.0"],\
-          ["@emotion/is-prop-valid", "npm:0.8.8"],\
-          ["@types/react", null],\
-          ["@types/styled-components", null],\
-          ["react", "npm:16.8.6"],\
-          ["styled-components", "virtual:ad0d2d45bf6c3cb2a523554aa52d6272f75f10712077573683fe35b3f2a535f45ab915d8f1bf560b08934375b1cf0f0058021d190e8530485843f4923b8fd928#npm:4.2.1"],\
-          ["tslib", "npm:1.14.1"]\
-        ],\
-        "packagePeers": [\
-          "@types/react",\
-          "@types/styled-components",\
-          "react",\
-          "styled-components"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["stylis", [\
       ["npm:3.5.4", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/stylis-npm-3.5.4-a35153f87b-10c0.zip/node_modules/stylis/",\
@@ -4662,13 +4617,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["tslib", [\
-      ["npm:1.14.1", {\
-        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/tslib-npm-1.14.1-102499115e-10c0.zip/node_modules/tslib/",\
-        "packageDependencies": [\
-          ["tslib", "npm:1.14.1"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:2.7.0", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/tslib-npm-2.7.0-21668f5c21-10c0.zip/node_modules/tslib/",\
         "packageDependencies": [\
