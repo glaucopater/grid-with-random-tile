@@ -250,26 +250,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/is-prop-valid@npm:^0.8.3":
-  version: 0.8.8
-  resolution: "@emotion/is-prop-valid@npm:0.8.8"
-  dependencies:
-    "@emotion/memoize": "npm:0.7.4"
-  checksum: 10c0/f6be625f067c7fa56a12a4edaf090715616dc4fc7803c87212831f38c969350107b9709b1be54100e53153b18d9fa068eb4bf4f9ac66a37a8edf1bac9b64e279
-  languageName: node
-  linkType: hard
-
 "@emotion/memoize@npm:0.7.1":
   version: 0.7.1
   resolution: "@emotion/memoize@npm:0.7.1"
   checksum: 10c0/e93f8688df9ce19e152e3996cebb7dd915009815ed90136cb65383a3626e8ef5ee1ceee9e9978edfb351e23f2efa29d2ba9bd80b7384778385e7545db4d12d26
-  languageName: node
-  linkType: hard
-
-"@emotion/memoize@npm:0.7.4":
-  version: 0.7.4
-  resolution: "@emotion/memoize@npm:0.7.4"
-  checksum: 10c0/b2376548fc147b43afd1ff005a80a1a025bd7eb4fb759fdb23e96e5ff290ee8ba16628a332848d600fb91c3cdc319eee5395fa33d8875e5d5a8c4ce18cddc18e
   languageName: node
   linkType: hard
 
@@ -2158,7 +2142,6 @@ __metadata:
     redux-devtools: "npm:^3.5.0"
     redux-logger: "npm:^3.0.6"
     styled-components: "npm:4.2.1"
-    styled-icons: "npm:^8.0.0"
     vite: "npm:^5.4.6"
     vite-plugin-svgr: "npm:^4.2.0"
   languageName: unknown
@@ -3781,19 +3764,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-icons@npm:^8.0.0":
-  version: 8.6.0
-  resolution: "styled-icons@npm:8.6.0"
-  dependencies:
-    "@emotion/is-prop-valid": "npm:^0.8.3"
-    tslib: "npm:^1.9.3"
-  peerDependencies:
-    react: "*"
-    styled-components: ">=4.1.0 <5"
-  checksum: 10c0/a66148591e0cbc6269641a33b4395171528ce44b596b1deba426346da628a11578ac1916e8750931c5103263c6d5c7a7faf6a0c92c24f247a5a2cc54d2a5d2ff
-  languageName: node
-  linkType: hard
-
 "stylis-rule-sheet@npm:^0.0.10":
   version: 0.0.10
   resolution: "stylis-rule-sheet@npm:0.0.10"
@@ -3865,13 +3835,6 @@ __metadata:
   version: 2.0.0
   resolution: "to-fast-properties@npm:2.0.0"
   checksum: 10c0/b214d21dbfb4bce3452b6244b336806ffea9c05297148d32ebb428d5c43ce7545bdfc65a1ceb58c9ef4376a65c0cb2854d645f33961658b3e3b4f84910ddcdd7
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^1.9.3":
-  version: 1.14.1
-  resolution: "tslib@npm:1.14.1"
-  checksum: 10c0/69ae09c49eea644bc5ebe1bca4fa4cc2c82b7b3e02f43b84bd891504edf66dbc6b2ec0eef31a957042de2269139e4acff911e6d186a258fb14069cd7f6febce2
   languageName: node
   linkType: hard
 

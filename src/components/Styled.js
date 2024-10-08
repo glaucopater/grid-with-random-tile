@@ -8,7 +8,7 @@ export const StyledGrid = styled.div`
   grid-template-rows: 100px 100px;
   grid-gap: 10px;
   margin: 50px auto;
-  width: 30%;
+  width: 21%;
   max-width: 600px
   @media (max-width: 800px) {
     margin: 50px;
