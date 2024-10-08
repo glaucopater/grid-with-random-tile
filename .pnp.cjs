@@ -3677,10 +3677,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["path-to-regexp", [\
-      ["npm:1.8.0", {\
-        "packageLocation": "../../.yarn/berry/cache/path-to-regexp-npm-1.8.0-a1904f5c44-10c0.zip/node_modules/path-to-regexp/",\
+      ["npm:1.9.0", {\
+        "packageLocation": "../../.yarn/berry/cache/path-to-regexp-npm-1.9.0-723549d8d9-10c0.zip/node_modules/path-to-regexp/",\
         "packageDependencies": [\
-          ["path-to-regexp", "npm:1.8.0"],\
+          ["path-to-regexp", "npm:1.9.0"],\
           ["isarray", "npm:0.0.1"]\
         ],\
         "linkType": "HARD"\
@@ -3937,7 +3937,7 @@ const RAW_RUNTIME_STATE =
           ["history", "npm:4.10.1"],\
           ["hoist-non-react-statics", "npm:3.3.2"],\
           ["loose-envify", "npm:1.4.0"],\
-          ["path-to-regexp", "npm:1.8.0"],\
+          ["path-to-regexp", "npm:1.9.0"],\
           ["prop-types", "npm:15.8.1"],\
           ["react", "npm:16.8.6"],\
           ["react-is", "npm:16.13.1"],\
