@@ -1,8 +1,12 @@
 {
-  "name": "grid-with-random-tile",
-  "version": "2.0.0",
-  "description": "",
-  "keywords": [],
+  "name": "redux-random-tiles",
+  "version": "2.0.1",
+  "description": "A random map generator, powered by Redux events.",
+  "keywords": [
+    "redux",
+    "board",
+    "poc"
+  ],
   "main": "src/index.js",
   "dependencies": {
     "@vitejs/plugin-react-swc": "^3.7.0",
