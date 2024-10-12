@@ -1,8 +1,14 @@
 # Grid with Random Tile
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e48f00d8-abf0-4717-8185-9e1a1d4d6f4e/deploy-status)](https://app.netlify.com/sites/redux-random-tiles/deploys)
+
 A random map generator, powered by Redux events.
 
+Live Demo
+[Live demo](https://redux-random-tiles.netlify.app/) 🔥
+
 ![Demo](/demo/grid-with-random-tile.png)
+
 
 ## Features
 
