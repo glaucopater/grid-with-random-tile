@@ -1,103 +1,96 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Item from "../../components/Item";
 import { StyledGrid } from "../../components/Styled";
 import { MAX_ITEMS, MAX_ITEMS_PER_ROW } from "../../constants";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { firstAction } from "./actions";
+import { firstAction } from "./boardActions";
+import styled from "styled-components";
 
-class Board extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  randomInt = () => {
-    return Math.random() < 0.5;
+// Improved random number generator (Xorshift)
+const createXorshift = (seed) => {
+  let x = seed;
+  let y = 362436069;
+  let z = 521288629;
+  let w = 88675123;
+  return () => {
+    const t = x ^ (x << 11);
+    x = y; y = z; z = w;
+    w = w ^ (w >> 19) ^ (t ^ (t >> 8));
+    return (w & 0x7fffffff) / 0x7fffffff;
   };
+};
 
-  generateRandomProp = index => {
-    return {
+const ConnectionsDisplay = styled.div`
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-align: center;
+`;
+
+const Board = ({ firstAction }) => {
+  const { items, connections } = useMemo(() => {
+    const seed = Date.now();
+    const xorshift = createXorshift(seed);
+    const randomBool = (probability = 0.7) => xorshift() < probability;
+
+    const generateRandomProp = (index) => ({
       pos: { x: index, y: 0 },
-      top: this.randomInt(),
-      right: this.randomInt(),
-      bottom: this.randomInt(),
-      left: this.randomInt(),
-      topConnected: null,
-      rightConnected: null,
-      leftConnected: null,
-      bottomConnected: null
-    };
-  };
-
-  connectItems = itemsWithProps => {
-    const rightConnectedItems = itemsWithProps.map((item, index) => {
-      //every check and update should be atomic
-      const {
-        rightConnected,
-        leftConnected,
-        topConnected,
-        bottomConnected,
-        ...props
-      } = item.props;
-      return React.cloneElement(item, {
-        topConnected:
-          itemsWithProps[index - MAX_ITEMS_PER_ROW] &&
-          itemsWithProps[index - MAX_ITEMS_PER_ROW].props.bottom &&
-          item.props.top,
-        rightConnected:
-          (index + 1) % MAX_ITEMS_PER_ROW !== 0 &&
-          itemsWithProps[index + 1] &&
-          itemsWithProps[index + 1].props.left &&
-          item.props.right,
-        bottomConnected:
-          itemsWithProps[index + MAX_ITEMS_PER_ROW] &&
-          itemsWithProps[index + MAX_ITEMS_PER_ROW].props.top &&
-          item.props.bottom,
-        leftConnected:
-          index % MAX_ITEMS_PER_ROW !== 0 &&
-          itemsWithProps[index - 1] &&
-          itemsWithProps[index - 1].props.right &&
-          item.props.left,
-        ...props
-      });
+      top: randomBool(),
+      right: randomBool(),
+      bottom: randomBool(),
+      left: randomBool(),
     });
 
-    return rightConnectedItems;
-  };
-
-  generateItems = () => {
-    const items = [...Array(MAX_ITEMS).keys()];
-    const itemsWithProps = items.map((item, index) => {
-      const randomProps = this.generateRandomProp(index);
-      return (
-        <Item key={index} {...randomProps} firstAction={this.props.firstAction}>
-          {index}
-        </Item>
-      );
+    const items = [...Array(MAX_ITEMS).keys()].map((_, index) => {
+      const randomProps = generateRandomProp(index);
+      return { ...randomProps, index };
     });
 
-    return this.connectItems(itemsWithProps);
-  };
+    const connections = [];
+    items.forEach((item, index) => {
+      if (item.top && index >= MAX_ITEMS_PER_ROW && items[index - MAX_ITEMS_PER_ROW].bottom) {
+        connections.push(`${index + 1}-${index - MAX_ITEMS_PER_ROW + 1}`);
+        items[index].topConnected = true;
+        items[index - MAX_ITEMS_PER_ROW].bottomConnected = true;
+      }
+      if (item.right && (index + 1) % MAX_ITEMS_PER_ROW !== 0 && items[index + 1].left) {
+        connections.push(`${index + 1}-${index + 2}`);
+        items[index].rightConnected = true;
+        items[index + 1].leftConnected = true;
+      }
+    });
 
-  render() {
-    return (
-      <div className="Board">
-        <StyledGrid>{this.generateItems()}</StyledGrid>
+    return { items, connections };
+  }, []);
+
+  const itemComponents = items.map((item) => (
+    <Item key={item.index} {...item} firstAction={firstAction}>
+      {item.index + 1}
+    </Item>
+  ));
+
+  return (
+    <div>
+      <ConnectionsDisplay>
+        Connections: {connections.join(', ')}
+      </ConnectionsDisplay>
+      <div className="Board" style={{ 
+        minHeight: '90vh', 
+        width: '100%',
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        boxSizing: 'border-box',
+        padding: '10px'
+      }}>
+        <StyledGrid>{itemComponents}</StyledGrid>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default connect(
   ({ first1 }) => ({
-    first1
+    first1,
   }),
-  dispatch =>
-    bindActionCreators(
-      {
-        firstAction
-      },
-      dispatch
-    )
+  { firstAction }
 )(Board);
