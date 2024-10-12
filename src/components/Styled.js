@@ -10,6 +10,7 @@ export const StyledGrid = styled.div`
   max-width: 600px;
   max-height: 600px;
   margin: auto;
+  font-family: 'Roboto', sans-serif;
 
   @media (max-width: 450px) {
     width: 90vw;

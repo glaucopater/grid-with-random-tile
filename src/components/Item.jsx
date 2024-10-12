@@ -24,6 +24,7 @@ const IconWrapper = styled.div`
   border: 2px solid #333;
   position: relative;
   z-index: 2;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const IconContent = styled.div`
@@ -76,6 +77,7 @@ const TileNumber = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const Item = ({ firstAction, topConnected, rightConnected, bottomConnected, leftConnected, pos, index, children, ...props }) => {
@@ -83,7 +85,7 @@ const Item = ({ firstAction, topConnected, rightConnected, bottomConnected, left
   const hasConnections = topConnected || rightConnected || bottomConnected || leftConnected;
 
   return (
-    <StyledItem color={color} style={{ opacity: hasConnections ? 1 : 0.5 }}>
+    <StyledItem color={color} style={{ opacity: hasConnections ? 1 : 0.5, fontFamily: 'Roboto, sans-serif' }}>
       <TileNumber>{children}</TileNumber>
       {topConnected && <TopConnection />}
       {rightConnected && <RightConnection />}

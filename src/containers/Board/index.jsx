@@ -1,65 +1,46 @@
 import React, { useMemo } from "react";
 import Item from "../../components/Item";
 import { StyledGrid } from "../../components/Styled";
-import { MAX_ITEMS, MAX_ITEMS_PER_ROW } from "../../constants";
 import { connect } from "react-redux";
 import { firstAction } from "./boardActions";
 import styled from "styled-components";
+import { createXorshift, generateItems, generatePaths } from "../../utils/boardUtils";
 
-// Improved random number generator (Xorshift)
-const createXorshift = (seed) => {
-  let x = seed;
-  let y = 362436069;
-  let z = 521288629;
-  let w = 88675123;
-  return () => {
-    const t = x ^ (x << 11);
-    x = y; y = z; z = w;
-    w = w ^ (w >> 19) ^ (t ^ (t >> 8));
-    return (w & 0x7fffffff) / 0x7fffffff;
-  };
-};
-
-const ConnectionsDisplay = styled.div`
-  margin-bottom: 20px;
-  font-size: 16px;
+const PathsDisplay = styled.div`
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  overflow-wrap: break-word;
+
+  @media (max-width: 450px) {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+`;
+
+const PathsTitle = styled.span`
+  color: #333;
+  margin-right: 10px;
+`;
+
+const PathsList = styled.span`
+  color: #0066cc;
 `;
 
 const Board = ({ firstAction }) => {
-  const { items, connections } = useMemo(() => {
+  const { items, paths } = useMemo(() => {
     const seed = Date.now();
     const xorshift = createXorshift(seed);
-    const randomBool = (probability = 0.7) => xorshift() < probability;
-
-    const generateRandomProp = (index) => ({
-      pos: { x: index, y: 0 },
-      top: randomBool(),
-      right: randomBool(),
-      bottom: randomBool(),
-      left: randomBool(),
-    });
-
-    const items = [...Array(MAX_ITEMS).keys()].map((_, index) => {
-      const randomProps = generateRandomProp(index);
-      return { ...randomProps, index };
-    });
-
-    const connections = [];
-    items.forEach((item, index) => {
-      if (item.top && index >= MAX_ITEMS_PER_ROW && items[index - MAX_ITEMS_PER_ROW].bottom) {
-        connections.push(`${index + 1}-${index - MAX_ITEMS_PER_ROW + 1}`);
-        items[index].topConnected = true;
-        items[index - MAX_ITEMS_PER_ROW].bottomConnected = true;
-      }
-      if (item.right && (index + 1) % MAX_ITEMS_PER_ROW !== 0 && items[index + 1].left) {
-        connections.push(`${index + 1}-${index + 2}`);
-        items[index].rightConnected = true;
-        items[index + 1].leftConnected = true;
-      }
-    });
-
-    return { items, connections };
+    const items = generateItems(xorshift);
+    const paths = generatePaths(items);
+    return { items, paths };
   }, []);
 
   const itemComponents = items.map((item) => (
@@ -70,9 +51,10 @@ const Board = ({ firstAction }) => {
 
   return (
     <div>
-      <ConnectionsDisplay>
-        Connections: {connections.join(', ')}
-      </ConnectionsDisplay>
+      <PathsDisplay>
+        <PathsTitle>Paths:</PathsTitle>
+        <PathsList>{paths.join(', ')}</PathsList>
+      </PathsDisplay>
       <div className="Board" style={{ 
         minHeight: '90vh', 
         width: '100%',
