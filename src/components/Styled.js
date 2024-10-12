@@ -1,89 +1,119 @@
-import styled, { css } from "styled-components";
-import chroma from "chroma-js";
-import { MAX_ITEMS_PER_ROW } from "../constants";
+import styled from 'styled-components';
 
 export const StyledGrid = styled.div`
-  display: grid
-  grid-template-columns: repeat(${MAX_ITEMS_PER_ROW}, 1fr);
-  grid-template-rows: 100px 100px;
-  grid-gap: 10px;
-  margin: 50px auto;
-  width: 21%;
-  max-width: 600px
-  @media (max-width: 800px) {
-    margin: 50px;
-    grid-gap: 5px;
-    grid-template-rows: 75px 75px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+  width: 90vmin;
+  height: 90vmin;
+  max-width: 600px;
+  max-height: 600px;
+  margin: auto;
+
+  @media (max-width: 450px) {
+    width: 90vw;
+    height: 90vw;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  @media (max-width: 350px) {
+    width: 95vw;
+    height: 95vw;
+    gap: 5px;
+    padding: 5px;
   }
 `;
 
 export const StyledItem = styled.div`
+  background-color: ${props => props.color || '#f0f0f0'};
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  aspect-ratio: 1;
   display: flex;
-  flex: 1;
-  flex-grow: 1;
-  align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 3px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
-  ${({ color = chroma.random() }) =>
-    css`
-      background-color: ${color}
-      color: ${chroma.contrast(color, "black") >= 4 ? "black" : "white"}
-      font-size: 18px
-      font-weight: bold
-    `}
-  @media (max-width: 800px) {
-    width: 75px;
-    height: 75px;
-  }
+  align-items: center;
+  position: relative;
+  overflow: visible;
 `;
 
 export const Content = styled.div`
-  position: relative;
-  width: 100px;
-  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Top = styled.div`
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start;
 `;
 
-export const Junction = styled.div`
-  position: absolute; 
-  height: 24px;
-  width: 24px;
-  text-align: center;
-  border-radius: 50%;
-  background-color: green;
-  color: white;
-  border: 1px solid white;
+export const Right = styled.div`
+  grid-column: 3;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
-export const Top = styled(Junction)`
+export const Bottom = styled.div`
+  grid-column: 2;
+  grid-row: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+`;
+
+export const Left = styled.div`
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const Connection = styled.div`
+  position: absolute;
+  background-color: #333;
+  z-index: 1;
+`;
+
+export const TopConnection = styled(Connection)`
+  width: 4px;
+  height: calc(50% - 18px); // Half of IconWrapper height (36px)
   top: 0;
-  opacity: ${props => (props.top ? +props.top : 0)};
-  background-color: ${props => (props.topConnected ? "green" : "red")};
-  color: ${props => (props.topConnected ? "white" : "black")};
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
-export const Bottom = styled(Junction)`
-  bottom: 0;
-  opacity: ${props => (props.bottom ? +props.bottom : 0)};
-  background-color: ${props => (props.bottomConnected ? "green" : "red")};
-  color: ${props => (props.bottomConnected ? "white" : "black")};
-`;
-
-export const Left = styled(Junction)`
-  left: 0;
-  opacity: ${props => (props.left ? +props.left : 0)};
-  background-color: ${props => (props.leftConnected ? "green" : "red")};
-  color: ${props => (props.leftConnected ? "white" : "black")};
-`;
-
-export const Right = styled(Junction)`
+export const RightConnection = styled(Connection)`
+  width: calc(50% - 18px);
+  height: 4px;
+  top: 50%;
   right: 0;
-  opacity: ${props => (props.right ? +props.right : 0)};
-  background-color: ${props => (props.rightConnected ? "green" : "red")};
-  color: ${props => (props.rightConnected ? "white" : "black")};
+  transform: translateY(-50%);
+`;
+
+export const BottomConnection = styled(Connection)`
+  width: 4px;
+  height: calc(50% - 18px);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export const LeftConnection = styled(Connection)`
+  width: calc(50% - 18px);
+  height: 4px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 `;
