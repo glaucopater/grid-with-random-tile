@@ -14,7 +14,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "styled-components": "4.2.1",
-    "vite": "^5.4.6",
+    "vite": "^5.4.12",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
